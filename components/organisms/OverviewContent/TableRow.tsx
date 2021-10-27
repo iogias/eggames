@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import Link from 'next/link'
 
 interface TableRowProps {
   title: string
@@ -14,9 +15,8 @@ export default function TableRow(props: TableRowProps) {
     'float-start icon-status': true,
     [`${status}`.toLowerCase()]: true,
   })
-  console.log(classStatus)
   return (
-    <tr className="align-middle">
+    <tr data-category={status.toLowerCase()} className="align-middle">
       <th scope="row">
         <img
           className="float-start me-3 mb-lg-0 mb-3"
@@ -47,6 +47,11 @@ export default function TableRow(props: TableRowProps) {
             {status}
           </p>
         </div>
+      </td>
+      <td>
+        <Link href="/member/transactions/detail">
+          <a className="btn btn-status rounded-pill text-sm">Details</a>
+        </Link>
       </td>
     </tr>
   )
